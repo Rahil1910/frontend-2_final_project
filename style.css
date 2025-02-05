@@ -1,0 +1,76 @@
+body{
+    background-color: black;
+}
+.inputs{
+    display: flex;
+    flex-direction: row;
+    column-gap: 95px;
+}
+label{
+    font-size: large;
+    color: white;
+}
+input{
+    width: 431px;
+    height: 35px;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    margin-top: 10px;
+    border: 1px solid white;
+    border-radius: 6px;
+}
+#btn{
+    width: 157px;
+    height: 44px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 5px;
+}
+#btn:hover{
+    background-color: rgb(125, 123, 123);
+}
+#btn:active{
+    background-color: rgb(43, 42, 42);
+    color: white;
+}
+h4{
+    font-size: 18px;
+    color:white;
+}
+#output{
+    color: white;
+}
+#del{
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 40px;
+    margin-top: 16px;
+}
+#del:hover{
+    background-color: rgb(125, 123, 123);
+}
+#del:active{
+    background-color: rgb(43, 42, 42);
+    color: white;
+}
+li p{
+    border: 1px solid white;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 11px;
+}
+li{
+    display: flex; 
+    column-gap: 20px;
+}

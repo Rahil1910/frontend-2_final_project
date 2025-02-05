@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <h4>New Employees</h4>
+    <form id="employeeForm">
+        <div class="inputs">
+            <div>
+                <label for="name">Enter Name</label><br>
+                <input id="name" type="text">
+            </div>
+            <div>
+                <label for="pro">Enter Profession</label><br>
+                <input id="pro" type="text">
+            </div>
+            <div>
+                <label for="age">Enter Age</label><br>
+                <input id="age" type="number">
+            </div>
+        </div>
+        <button type="submit" id="btn">Add User</button><br>
+        <label id="message"></label>
+    </form>
+    <h4>Added Employees</h4>
+    <div id="output"></div>
+    <script>
+        let employees = [];
+        let idCounter = 1;
+        function displayEmployees(){
+            const output = document.getElementById('output');
+            if(employees.length === 0){
+                output.innerText="you have 0 Employees";
+            }else{
+                output.innerHTML="";
+                const ul = document.createElement('ul');
+                employees.forEach(data => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<p>${data.id}.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name : ${data.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profession : ${data.profession}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Age : ${data.age}</p>
+                        <button id="del" onclick="delData(${data.id})">Delete User</button>`
+                    ul.appendChild(li);
+                });
+                output.appendChild(ul);
+
+            }
+        }
+        function addData(event){
+            event.preventDefault();
+            const message = document.getElementById('message');
+            const name = document.getElementById('name').value;
+            const pro = document.getElementById('pro').value;
+            const age = document.getElementById('age').value;
+            if(name=="" || pro=="" || age==""){
+                message.style.color = "red";
+                message.innerText = "Error : Please Make sure All the fields are filled before adding in an employee !";
+            }else{
+                message.style.color = "green";
+                message.innerText = "Success : Employee Added!";
+                const employee = {
+                    id: idCounter++,
+                    name: name,
+                    profession: pro,
+                    age: age
+                }
+                employees.push(employee);
+                displayEmployees();
+                document.getElementById('employeeForm').reset();
+                setTimeout(()=>{
+                    message.innerText="";
+                },2000);
+            }
+        }
+        function delData(id){
+            employees = employees.filter(employee => employee.id !== id);
+            displayEmployees();
+        }
+        displayEmployees();
+        document.getElementById('employeeForm').addEventListener('submit', addData);
+    </script>
+</body>
+</html>
